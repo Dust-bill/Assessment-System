@@ -1,5 +1,6 @@
 import org.example.AssessmentFeed;
 
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
@@ -38,13 +39,22 @@ public class Main {
                     + AI_mark
                     + Design_mark
                     + Weighted_mark));
+            if (AI_mark > AI_result()/4+20){
+                grid.setBackground(Color.RED);
+            }
 
 
         }
         // grid.setHeading(row, col, heading);
         // grid.setCell(row, col, text);
     }
-
+    private AI_result(){
+        double total_AI_mark = 0.0;
+        for(i=0; i<4;i++){
+            total_AI_mark+=AssessmentFeed.getResult(CID,AssessmentFeed.AI_PROJECT,AssessmentFeed.EXPLAINED_SUCCESSFULLY);
+        }
+        return total_AI_mark
+    }
     private void check() {
         // TODO 4：读取本轮数据 → 按题意判断/执行操作 → 更新对应格子。
         // grid.setCell(row, col, text);
